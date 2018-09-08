@@ -15,18 +15,41 @@ function handleLogin() {
 }//end handleLogin
 function handleSubmit() {
     console.log('submit working');
-}//end handleSubmit
+    let objectToSend = {
+        text: $('#messagesIn').val(),
+        from: $('#usernameIn').val()
+    }
+    console.log('object to send: ', objectToSend);
+    $.ajax({
+        method: 'POST',
+        url: '/messages',
+        data: objectToSend
+    }).then(function (response) {
+        console.log('back from POST with:', response);
+
+    }).catch(function (error) {
+        alert('Error updating messages')
+        console.log('Error:', error);
+    })//end handleSubmit
+}
+
 function handleLogout() {
     console.log('logout working');
 }//end handleLogout
+
 function updateMessages() {
     $.ajax({
         method: 'GET',
         url: '/messages'
     }).then(function (response) {
         console.log('back from GET with: ', response);
+        let el = $('#messagesOut');
+        el.empty();
+        for (let message of response) {
+            el.append(`<li>${message.text}:<strong>${message.from}</strong></li>`)
+        }//end for
     }).catch(function (error) {
         alert('Error updating messages')
         console.log('Error:', error);
-    })
-}//end updateMessages
+    })//end ajax
+}//end updateMessages    
