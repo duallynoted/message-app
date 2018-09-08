@@ -1,9 +1,16 @@
 //requires
 const express = (require('express'));
-const bodyParser = (require.urlencoded({extended:true}));
-//globals
-const PORT= 5000;
+const app = express();
+const bodyParser = (require('body-parser'));
+
 //uses
 app.use(express.static('server/public'));
+app.use(bodyParser.urlencoded({extended: true}));
+//globals
+const PORT= 5000;
+
 //spin up server
-app.listen()
+app.listen(PORT, ()=>{
+    console.log('Server is up on: ', PORT);
+    
+})
