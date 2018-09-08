@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,23 @@
     <link rel="stylesheet" href="styles/style.css">
     <title>Messages</title>
 </head>
+
 <body>
     <h1>Message App</h1>
-    <h2>Hi Erin!</h2>
+    <div id="userDiv">
+        <input type="text" placeholder="Username" id="usernameIn">
+        <button id="loginButton">Login</button>
+            
+    </div>
+    <div id="messagesDiv">
+        <ul id="messagesOut">
+        </ul>
+        <input type="text" placeholder="What would you like to say?" id="messagesIn">
+        <button id="submitButton">Speak</button>
+    </div>
+    <div>
+        <span>All Done?<button id="logoutButton">Logout</button></span>
+    </div>
 </body>
+
 </html>
