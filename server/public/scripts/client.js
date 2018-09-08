@@ -26,7 +26,7 @@ function handleSubmit() {
         data: objectToSend
     }).then(function (response) {
         console.log('back from POST with:', response);
-
+        updateMessages();
     }).catch(function (error) {
         alert('Error updating messages')
         console.log('Error:', error);
@@ -46,7 +46,7 @@ function updateMessages() {
         let el = $('#messagesOut');
         el.empty();
         for (let message of response) {
-            el.append(`<li>${message.text}:<strong>${message.from}</strong></li>`)
+            el.append(`<li>${message.text}:<i>${message.from}</i></li>`)
         }//end for
     }).catch(function (error) {
         alert('Error updating messages')
